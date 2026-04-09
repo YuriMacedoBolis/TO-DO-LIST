@@ -1,0 +1,8 @@
+# Dependência principal da Interface Gráfica
+customtkinter==5.2.2
+
+# Dependência para Testes Automatizados
+pytest==8.1.1
+
+# Dependência para Linting/Análise Estática
+flake8==7.0.0
