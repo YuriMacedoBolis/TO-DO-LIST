@@ -20,19 +20,14 @@ def test_deve_criar_arquivo_ao_salvar():
 
 def test_arquivo_inexistente_deve_retornar_lista_vazia():
     resultado = ler_tarefas_csv("arquivo_fantasma.csv")
-    
     assert type(resultado) == list
     assert len(resultado) == 0
 
 def test_salvar_e_ler_uma_unica_tarefa():
     dados = [("Pagar boletos", 1)]
     salvar_tarefas_csv_logica(ARQUIVO_NOVO_TESTE, dados)
-    
     tarefas_carregadas = ler_tarefas_csv(ARQUIVO_NOVO_TESTE)
-    
     assert len(tarefas_carregadas) == 1
-    
     tarefa_isolada = tarefas_carregadas[0] 
-    
     assert tarefa_isolada[0] == "Pagar boletos"
     assert tarefa_isolada[1] == 1

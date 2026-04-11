@@ -161,7 +161,6 @@ class App(custom.CTk):
     def horario(self):
         string_hora = strftime("%H:%M:%S %p")
         self.label_relogio.configure(text=string_hora)
-        
         string_data = strftime("%A %d/%m")
         self.label_dia_mes_ano.configure(text=string_data)
 
