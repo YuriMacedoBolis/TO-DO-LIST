@@ -129,11 +129,9 @@ class App(custom.CTk):
         self.calendario.place(relx=0.5 , rely=0.5 , anchor="center")
         
     def horario(self):
-        # Atualiza a hora
         string_hora = strftime("%H:%M:%S %p")
         self.label_relogio.configure(text=string_hora)
         
-        # Atualiza a data (dia/mês)
         string_data = strftime("%A %d/%m")
         self.label_dia_mes_ano.configure(text=string_data)
         
