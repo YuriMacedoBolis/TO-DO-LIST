@@ -1,10 +1,23 @@
 # 📝 TO-DO LIST (Lista de Tarefas)
 
-##  Visão Geral do Projeto
+**Autor:** Yuri Macedo Bolis  
+**Versão Atual:** 1.0.0  
+**Repositório Público:** [https://github.com/YuriMacedoBolis/TO-DO-LIST](https://github.com/YuriMacedoBolis/TO-DO-LIST)
 
-Este projeto é uma aplicação desktop de Lista de Tarefas (To-Do List) construída em Python utilizando a biblioteca **CustomTkinter** para uma interface gráfica moderna e responsiva. O objetivo é fornecer uma ferramenta simples e visualmente agradável para gerenciar tarefas diárias, com recursos de persistência de dados, visualização de calendário e alternância de temas.
+## 🎯 Contexto e Propósito
 
-##  Funcionalidades Principais
+### O Problema Real
+Profissionais que atuam diretamente com o cuidado e a gestão de rotinas, como babás e cuidadores, frequentemente lidam com uma sobrecarga de informações diárias (horários de medicação, refeições, atividades educativas, etc.). A falta de um sistema simples para registrar e acompanhar essas demandas pode gerar esquecimentos, estresse e falhas na gestão do tempo.
+
+### Proposta da Solução
+O TO-DO LIST é uma aplicação desktop leve e intuitiva focada em amenizar essa dor. A ferramenta permite o registro e acompanhamento rápido de tarefas diárias, garantindo que as atividades planejadas sejam concluídas e salvas de forma segura. A interface inclui um relógio e calendário integrados, facilitando a visualização dos compromissos no tempo.
+
+### Público-Alvo
+Babás, cuidadores, organizadores pessoais e qualquer profissional que necessite de uma gestão de rotina simplificada e visual.
+
+---
+
+## ⚙️ Funcionalidades Principais
 
 * **Adicionar Tarefas:** Insira novas tarefas na lista de forma rápida.
 * **Remover Tarefas:** Exclua tarefas concluídas ou indesejadas com a opção de exclusão em massa (removendo todas as tarefas marcadas).
@@ -13,18 +26,20 @@ Este projeto é uma aplicação desktop de Lista de Tarefas (To-Do List) constru
 * **Design Moderno:** Utiliza temas de cores personalizados e a biblioteca CustomTkinter para uma experiência de usuário aprimorada.
 * **Modo Claro/Escuro:** Alternância fácil entre temas de cores (Light e Dark) através de um *switch*.
 
-##  Tecnologias Utilizadas
+---
+
+## 💻 Tecnologias Utilizadas
 
 * **Linguagem:** Python
 * **Framework GUI:** CustomTkinter
 * **Módulos Padrão:** `time`, `calendar`, `csv`, `tkinter.messagebox`
+* **Qualidade de Código e Testes:** `pytest` (Testes), `flake8` (Linting)
 
-##  Como Instalar e Rodar
+---
 
-Para executar este projeto localmente, siga os passos abaixo.
+## 🚀 Como Instalar e Rodar
 
 ### Pré-requisitos
-
 Certifique-se de ter o Python instalado (versão 3.x recomendada).
 
 ### 1. Clonar o Repositório
@@ -33,6 +48,28 @@ Certifique-se de ter o Python instalado (versão 3.x recomendada).
 git clone [https://github.com/YuriMacedoBolis/TO-DO-LIST.git](https://github.com/YuriMacedoBolis/TO-DO-LIST.git)
 cd TO-DO-LIST
 ```
-2. Instalar as DependênciasA principal dependência é o CustomTkinter.Bashpip install customtkinter
-3. Configuração de Cores (Opcional)Este projeto utiliza um arquivo color_themes.json para definir cores personalizadas. Certifique-se de que este arquivo esteja no mesmo diretório que o main.py.
-4. Executar a AplicaçãoBashpython main.py
+
+### 2. Instalar as Dependências
+As dependências do projeto estão declaradas no arquivo requirements.txt. Instale-as usando:
+
+```
+pip install -r requirements.txt
+```
+
+### 3. Executar a Aplicação
+
+```
+python main.py 
+```
+
+### 4. Qualidade e Automação
+Instruções para rodar o Lint (Análise Estática)
+Para verificar a padronização e qualidade do código, utilizamos o flake8. Para executar, rode no terminal:
+```
+flake8 main.py
+```
+Instruções para rodar os Testes
+Os testes automatizados foram criados para validar os comportamentos centrais da aplicação. Para executá-los, utilize o pytest:
+```
+pytest tests/
+```
