@@ -7,21 +7,20 @@ import sys
 from tkinter import messagebox
 import requests
 
+
 def resource_path(relative_path):
-    """ Retorna o caminho absoluto para o recurso, funcionando tanto no ambiente de dev quanto no .exe """
     try:
-        # PyInstaller cria uma pasta temporária em _MEIPASS
         base_path = sys._MEIPASS
     except Exception:
         base_path = os.path.abspath(".")
     return os.path.join(base_path, relative_path)
 
-# Substitua a linha antiga do tema por estas duas:
+
 caminho_tema = resource_path("color_theme.json")
 custom.set_default_color_theme(caminho_tema)
 
 
-def obter_clima_atual(lat="-15.7801", lon="-47.9292"):  # BSB
+def obter_clima_atual(lat="-15.7801", lon="-47.9292"):
     url = (
         f"https://api.open-meteo.com/v1/forecast"
         f"?latitude={lat}&longitude={lon}&current_weather=true"
