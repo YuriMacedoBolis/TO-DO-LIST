@@ -3,9 +3,33 @@ from time import strftime, localtime
 import calendar
 import csv
 import os
+import sys
 from tkinter import messagebox
+import requests
 
-custom.set_default_color_theme("color_theme.json")
+def resource_path(relative_path):
+    """ Retorna o caminho absoluto para o recurso, funcionando tanto no ambiente de dev quanto no .exe """
+    try:
+        # PyInstaller cria uma pasta temporária em _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
+# Substitua a linha antiga do tema por estas duas:
+caminho_tema = resource_path("color_theme.json")
+custom.set_default_color_theme(caminho_tema)
+
+
+def obter_clima_atual(lat="-15.7801", lon="-47.9292"):  # BSB
+    url = (
+        f"https://api.open-meteo.com/v1/forecast"
+        f"?latitude={lat}&longitude={lon}&current_weather=true"
+    )
+    resposta = requests.get(url, timeout=5)
+    resposta.raise_for_status()
+    dados = resposta.json()
+    return dados["current_weather"]["temperature"]
 
 
 def ler_tarefas_csv(caminho_arquivo):
@@ -133,20 +157,34 @@ class App(custom.CTk):
         self.salvar_tarefas_csv()
 
     def widget_calendario(self):
+        # 1. Relógio
         self.label_relogio = custom.CTkLabel(
             self, width=250, height=100, font=("Arial", 40, "bold")
         )
         self.label_relogio.place(relx=0.25, rely=0.23, anchor="center")
 
+        # 2. Data Atual
         self.brasilia = localtime()
         texto_data = strftime("%A %d/%m", self.brasilia)
         self.label_dia_mes_ano = custom.CTkLabel(
-            self, width=250, height=35, text=texto_data
+            self, width=250, height=35, text=texto_data,
+            font=("Arial", 18, "bold")
         )
-        self.label_dia_mes_ano.place(relx=0.25, rely=0.4, anchor="center")
+        self.label_dia_mes_ano.place(relx=0.25, rely=0.45, anchor="center")
 
+        # 3. Clima (Nova Integração)
+        self.label_clima = custom.CTkLabel(
+            self, width=250, height=35, text="A carregar clima...",
+            font=("Arial", 18, "bold")
+        )
+        self.label_clima.place(relx=0.25, rely=0.35, anchor="center")
+
+        # Chamada para buscar o clima da API e atualizar a label
+        self.atualizar_clima()
+
+        # 4. Frame do Calendário Mensal
         self.frame2 = custom.CTkFrame(self, width=250, height=215)
-        self.frame2.place(relx=0.25, rely=0.7, anchor="center")
+        self.frame2.place(relx=0.25, rely=0.75, anchor="center")
 
         ano_atual = self.brasilia.tm_year
         mes_atual = self.brasilia.tm_mon
@@ -157,6 +195,13 @@ class App(custom.CTk):
             font=("Consolas", 20, "bold")
         )
         self.calendario.place(relx=0.5, rely=0.5, anchor="center")
+
+    def atualizar_clima(self):
+        try:
+            temp = obter_clima_atual()
+            self.label_clima.configure(text=f"Clima: {temp}°C")
+        except Exception:
+            self.label_clima.configure(text="Clima: Indisponível")
 
     def horario(self):
         string_hora = strftime("%H:%M:%S %p")
