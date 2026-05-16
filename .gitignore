@@ -1,0 +1,11 @@
+# Arquivos do PyInstaller
+build/
+dist/
+*.spec
+
+# Arquivos do Python
+__pycache__/
+*.pyc
+
+# Banco de dados local
+tarefas.csv

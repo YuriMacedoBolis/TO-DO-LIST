@@ -6,3 +6,6 @@ pytest==8.1.1
 
 # Dependência para Linting/Análise Estática
 flake8==7.0.0
+
+#Dependencia para Consumo de APIs
+requests==2.34.2
