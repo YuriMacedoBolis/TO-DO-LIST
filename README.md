@@ -1,8 +1,12 @@
 # 📝 TO-DO LIST (Lista de Tarefas)
 
 **Autor:** Yuri Macedo Bolis  
+
 **Versão Atual:** 1.0.0  
+
 **Repositório Público:** [https://github.com/YuriMacedoBolis/TO-DO-LIST](https://github.com/YuriMacedoBolis/TO-DO-LIST)
+
+**Link Do Deploy (.exe)** [https://github.com/YuriMacedoBolis/TO-DO-LIST/releases/tag/v1.1.0].
 
 ## 🎯 Contexto e Propósito
 
